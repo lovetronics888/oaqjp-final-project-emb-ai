@@ -1,12 +1,7 @@
 from flask import Flask, request, render_template
 from EmotionDetection.emotion_detection import emotion_detector
-
-import os
-print(f"Current Working Directory: {os.getcwd()}")
-print(f"Template folder exists here: {os.path.exists('templates/index.html')}")
-
 #Flask instance
-app = Flask(__name__, template_folder='templates')
+app = Flask(__name__)
 @app.route("/emotionDetector")
 def emot_detector():
     """
