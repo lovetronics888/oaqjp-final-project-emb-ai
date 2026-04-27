@@ -8,16 +8,14 @@ def emot_detector():
     Fetch text from requests,detect emotion and return formatted result
     """
     text_to_analyze = request.args.get('textToAnalyze')
-    if not text_to_analyze:
-        return "Invalid input! Please provide text to analyze."
     response = emotion_detector(text_to_analyze)
+    if not response['dominant_emotion']:
+        return "Invalid text! Please try again!"
     formatted_output = (
     f"For the given statement, the system response is 'anger': {response['anger']}, "
     f"'disgust': {response['disgust']}, 'fear': {response['fear']}, "
     f"'joy': {response['joy']} and 'sadness': {response['sadness']}. "
-    f"The dominant emotion is {response['dominant_emotion']}."
-)
-
+    f"The dominant emotion is {response['dominant_emotion']}.")
 
     return formatted_output
 
